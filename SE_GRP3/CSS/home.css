@@ -1,8 +1,8 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
   margin: 0;
   padding: 0;
+  background: linear-gradient(to right, black, blue);
 }
 
 /* General */
@@ -16,7 +16,6 @@ a, button {
   font-family: Arial;
   font-weight: 500;
   font-size: 14px;
-  color: aliceblue;
   text-decoration: none;
   cursor: pointer;
 }
@@ -28,7 +27,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #333;
 }
 
 .nav-img-con {
@@ -57,16 +55,16 @@ nav {
 }
 
 .nav-link a:hover {
-  color: burlywood;
+  color: rgb(0, 0, 0);
 }
 
 .primarybtn {
-  background-color: burlywood;
+  background-color: transparent;
   border-radius: 10px;
-  font-weight: 600;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: 500px;
   padding: 10px;
-  color: black;
+  color: white;
+  transition: all 0.3s ease 0s;
 }
 
 @media screen and (max-width: 791px) {
@@ -88,7 +86,6 @@ nav {
 .phrase-container {
   text-align: center;
   padding: 50px;
-  background: url('hotel-pictures/cover.jpg') no-repeat center center;
   background-size: cover;
   color: rgb(255, 255, 255);
 }
@@ -96,33 +93,31 @@ nav {
 .phrase {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  background-color: black;
 }
 
 .phrase2 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  background-color: black;
 }
 
 .secondarybtn {
-  background-color: burlywood;
+  background-color: black;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
+  transition: all 0.3s ease 0s;
 }
 
 .secondarybtn:hover {
-  background-color: #e0a96d;
+  background-color: rgb(80, 171, 252);
 }
-
 /* About Section */
-.about-section, .mission-section, .testimonials-section, .booking-section, .team-section {
+.about-section, .mission-section, .testimonials-section, .team-section {
   padding: 50px;
   text-align: center;
-  background-color: #333;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 /* Other Sections */
@@ -173,7 +168,6 @@ nav {
 
 /* Contact Section */
 .contact-container {
-  background-color: #333;
   color: white;
   padding: 50px;
 }
@@ -234,5 +228,3 @@ nav {
   border-radius: 50%;
   object-fit: cover; 
 }
-
-
