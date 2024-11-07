@@ -21,3 +21,10 @@ CREATE TABLE submissions (
     file_data LONGBLOB NOT NULL,
     submission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE testimonials (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message TEXT NOT NULL,
+    author VARCHAR(255) DEFAULT 'New User',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
