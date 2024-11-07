@@ -228,3 +228,76 @@ nav {
   border-radius: 50%;
   object-fit: cover; 
 }
+/* Testimonials Section */
+.testimonials-section {
+  background: linear-gradient(to right, #1c1c1c, #3a3a3a);
+  padding: 50px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .testimonials-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  }
+
+  .testimonials-section blockquote {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+
+            /* IIBAHIN KO PA TO */
+
+ background: linear-gradient(to right, #1c1c1c, #e9e9e9);
+ border-left: 10px solid burlywood;
+ font-style: italic;
+ position: relative;
+ opacity: 0;
+ transform: translateY(20px);
+ transition: opacity 0.5s ease, transform 0.5s ease;
+ }
+
+ .testimonials-section blockquote::before {
+ content: open-quote;
+ font-size: 4em;
+ position: absolute;
+ left: 10px;
+ top: -10px;
+ color: burlywood;
+ }
+
+ .testimonials-section blockquote cite {
+ display: block;
+ margin-top: 10px;
+ font-style: normal;
+ font-weight: bold;
+ color: #fff;
+ text-align: right;
+ }
+
+ .testimonials-section form {
+ margin-top: 20px;
+ }
+
+ .testimonials-section textarea {
+ width: 100%;
+ padding: 10px;
+ margin-bottom: 10px;
+ border: none;
+ border-radius: 5px;
+ background-color: #555;
+ color: white;
+ }
+
+ .alert {
+ margin-top: 20px;
+ }
+
+.testimonials-section blockquote:hover {
+  box-shadow: 0 4px 20px rgba(105, 25, 253, 0.5);
+  transform: translateY(-5px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
