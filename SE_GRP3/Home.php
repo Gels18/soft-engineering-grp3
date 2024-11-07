@@ -10,19 +10,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
     />
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="CSS/home.css" />
+    <link rel="stylesheet" href="CSS/home.css">
 </head>
 <body>
     <div class="links">
         <nav>
             <div class="nav-img-con">
                 <a href="#.html">
-                    <img src="Media/Logo.jpg" alt="Logo" class="nav-logo">
+                    <img src="Media/Logo.jfif" alt="Logo" class="nav-logo">
                 </a>
             </div>
             <div class="nav-link" id="navbar_list">
@@ -55,18 +50,54 @@
 
         <div class="testimonials-section">
             <h2>What Our Respondents Say</h2>
-            <blockquote>
-                Useful ito lalo na para sa aming mga malayo ang bahay dahil updated ang website na ito sa mga announcement at nanonotify kami sa mga requirements namin
-                <cite>- 4th yr ComSci Student</cite>
-            </blockquote>
-            <blockquote>
-                Very student friendly dahil hindi na namin need magpabalik-balik sa CCC para alamin ang mga dapat ipasa
-                <cite>- 4th yr ComSci Student</cite>
-            </blockquote>
-        </div>
+            <div id="testimonialList">
+                <?php
+                $servername = "localhost"; // Change if needed
+                $username = "root"; // Your database username
+                $password = ""; // Your database password
+                $dbname = "client4"; // Your database name
 
-        <div class="booking-section">
-            <a href="#booking" class="booking-button">Book Now</a>
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Handle form submission
+                $confirmationMessage = "";
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['testimonialMessage'])) {
+                    $message = $conn->real_escape_string($_POST['testimonialMessage']);
+                    $author = "New User"; // You can enhance this to take the author's name from input
+                    $sql = "INSERT INTO testimonials (message, author) VALUES ('$message', '$author')";
+                    if ($conn->query($sql) === TRUE) {
+                        $confirmationMessage = "Thank you for your testimonial!";
+                    }
+                }
+
+                // Fetch testimonials
+                $result = $conn->query("SELECT * FROM testimonials ORDER BY created_at DESC");
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<blockquote>" . htmlspecialchars($row['message']) . "<cite>- " . htmlspecialchars($row['author']) . "</cite></blockquote>";
+                    }
+                } else {
+                    echo "<p>No testimonials yet.</p>";
+                }
+
+                $conn->close();
+                ?>
+            </div>
+
+            <h3>Submit Your Testimonial</h3>
+            <form method="POST" action="">
+                <label for="testimonialMessage">Your Testimonial:</label>
+                <textarea id="testimonialMessage" name="testimonialMessage" required></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <?php if (!empty($confirmationMessage)): ?>
+                <div class="alert alert-success mt-3">
+                    <?= htmlspecialchars($confirmationMessage) ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <section class="team-section">
@@ -145,5 +176,17 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const testimonials = document.querySelectorAll('.testimonials-section blockquote');
+            testimonials.forEach((blockquote, index) => {
+                setTimeout(() => {
+                    blockquote.style.opacity = 1; // Fade in
+                    blockquote.style.transform = 'translateY(0)'; // Move to position
+                }, index * 300); // Staggered effect
+            });
+        });
+    </script>
 </body>
 </html>
